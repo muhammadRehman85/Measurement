@@ -5,18 +5,20 @@ const StepThreeForm = ({ route, navigation }) => {
   console.log(route.params);
   const [additionalMeasurement, setAdditionalMeasurement] = useState('');
 // console.log(additionalMeasurement)
-
+// =========================all inputs data is available in formata objects=========
+// =========================so from here you can add it to database=================
   const formData={
     ...route.params,
     additionalMeasurement:additionalMeasurement
   }
-
+// =========================on next button click this function will be called===============
 const handleNext=()=>{
   // addFormData();
   navigation.navigate('Form')
 }
-
+// ========================console input data====================================
 console.log(formData);
+// ==============================================================================
   return (
     <KeyboardAvoidingView
       style={styles.containerWrapper}
@@ -44,7 +46,7 @@ console.log(formData);
               
             />
           </View>
-
+ {/*============================Steps indentifier code  after input ========================  */}
           <View style={styles.progressContainer}>
             <View style={styles.countCircle}>
               <Text style={styles.countCircleText}>1</Text>
@@ -58,7 +60,7 @@ console.log(formData);
               <Text style={styles.countCircleText}>3</Text>
             </View>
           </View>
-
+{/* ==========================Next and back buttons ======================================== */}
           <View style={styles.footer}>
             <TouchableOpacity style={styles.cancelButton} onPress={() => navigation.goBack()}>
               <Text style={styles.cancelText}>Back</Text>
@@ -81,7 +83,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 20,
+    padding: 15,
     backgroundColor: 'white',
     borderRadius: 12,
   },

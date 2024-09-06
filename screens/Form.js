@@ -139,7 +139,7 @@ const Form = ({navigation}) => {
           />
 
           <View style={styles.inputGroup}>
-            <TextInput style={styles.input} keyboardType='numeric' placeholder="Loosing" />
+            <TextInput style={styles.input} keyboardType='numeric' placeholder="Waist" />
           </View>
         </View>
         <View style={styles.row}>
@@ -149,7 +149,7 @@ const Form = ({navigation}) => {
           />
 
           <View style={styles.inputGroup}>
-            <TextInput style={styles.input} keyboardType='numeric' placeholder="Hemline" 
+            <TextInput style={styles.input} keyboardType='numeric' placeholder="Hip" 
              value={formValues.hemline}
              onChangeText={(value) => handleInputChange('hemline', value)}/>
           </View>
@@ -164,7 +164,7 @@ const Form = ({navigation}) => {
           />
 
           <View style={styles.inputGroup}>
-            <TextInput style={styles.input} keyboardType='numeric' placeholder="Loosing" 
+            <TextInput style={styles.input} keyboardType='numeric' placeholder="front Patti" 
              value={formValues.loosing}
              onChangeText={(value) => handleInputChange('loosing', value)}
             />

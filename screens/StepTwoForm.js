@@ -4,8 +4,8 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image ,
 import React, { useState } from 'react';
 
 const StepTwoForm = ({ route,navigation }) => {
-  // console.log(route.params.formValues.neck);
-  const {formValues}=route.params;
+
+
   const [selectedCollar, setSelectedCollar] = useState('');
   const [frontPocket, setFrontPocket] = useState('');
   const [selectedDaman, setSelectedDaman] = useState('');
@@ -13,10 +13,12 @@ const StepTwoForm = ({ route,navigation }) => {
   const [selectedShalwaarPocket, setSelectedShalwaarPocket] = useState('');
   const [selectedCuff, setSelectedCuff] = useState('');
 
-
+const {formValues}=route.params;
 // ======================Updataed Measurement Values from Step Two==================
   const updatedFormValues = {
+    // --------------previous form values are in formValues object------------
     ...formValues,
+    // --------------adding inputs values from this steptwo form-------------
     collar: selectedCollar,
     frontPocket: frontPocket,
     daman: selectedDaman,
@@ -25,14 +27,11 @@ const StepTwoForm = ({ route,navigation }) => {
     cuff: selectedCuff,
   };
 
-  console.log(selectedDaman)
-
-
   // ---------------------------------------------------------------
   const collarOptions = [
     { collar: 'Collar', image: require('../assets/collar.png') },
     { collar: 'Ben', image: require('../assets/ben.png') },
-    { collar: 'Half Ben', image: require('../assets/ben.png') },
+    { collar: 'Half Ben', image: require('../assets/halfben.png') },
     
   ];
   const handleSelectCollar = (collar) => {
@@ -67,7 +66,7 @@ const StepTwoForm = ({ route,navigation }) => {
   };
   // ==================================================================
   const ShalwaarPocketOptions = [
-    { shalwaarPocket: 'Shalwaar Pocket', image: require('../assets/rounddaman.png') },
+    { shalwaarPocket: 'Shalwaar Pocket', image: require('../assets/shalwaarpocket.png') },
     
     
   ];
@@ -79,7 +78,7 @@ const StepTwoForm = ({ route,navigation }) => {
     { cuff: 'Fit Cuff', image: require('../assets/fitcuff.png') },
     { cuff: 'Simple Cuff', image: require('../assets/simplecuff.png') },
     { cuff: 'Simple  round Sleeve', image: require('../assets/simpleroundsleeve.png') },
-    { cuff: 'Simple  Sleeve', image: require('../assets/simplecuff.png') },
+    { cuff: 'Simple  Sleeve', image: require('../assets/simpleSleeve.png') },
 
     
     
@@ -89,16 +88,15 @@ const StepTwoForm = ({ route,navigation }) => {
   };
   // ==========================================================================
   const handleNext = () => {
-    // console.log('Form values:', formValues); // Debugging: Log current form values
-
-    // Check if any value is empty
+  
+    // --------------------Check if any value is empty----------------
     if (
       selectedCollar === '' || frontPocket === '' || selectedCuff === '' || selectedDaman === '' ||
      selectedPocket=== '' || selectedShalwaarPocket === '' 
     ) {
       Alert.alert('Error', 'Please fill out all the fields.');
     } else {
-      // Navigate to StepTwoForm with formValues if validation passes
+      // ------------Navigate to StepTwoForm with formValues if validation passes
       navigation.navigate('StepThreeForm', { updatedFormValues });
     }}
   return (
@@ -111,7 +109,7 @@ const StepTwoForm = ({ route,navigation }) => {
         />
         <Text style={styles.headerText}>Add Measurement</Text>
       </View>
-      {/* ------------------collar options----------------- */}
+      {/* =======================collar options====================== */}
         <ScrollView showsVerticalScrollIndicator={false}>
           {collarOptions.map((item) => (
             <TouchableOpacity
@@ -181,7 +179,7 @@ const StepTwoForm = ({ route,navigation }) => {
 {DamanOptions.map((item) => (
  
             <TouchableOpacity
-              key={item.color} // Add a unique key for each item
+              key={item.daman} // Add a unique key for each item
               style={styles.itemContainer}
               onPress={() => handleSelectDaman(item.daman)}
             ><Image source={item.image} style={styles.image}/>
